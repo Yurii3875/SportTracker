@@ -7,15 +7,15 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/zsh</string>
-    <string>/Users/yuriiobraztsov/.local/bin/sporttracker-github-autosync</string>
+    <string>/Users/yuriiobraztsov/Projects/SportTracker/scripts/github-autosync.sh</string>
   </array>
   <key>StartInterval</key>
   <integer>60</integer>
   <key>RunAtLoad</key>
   <true/>
   <key>StandardOutPath</key>
-  <string>/Users/yuriiobraztsov/Desktop/Мой проект по sport tracker ( Идеи )/SportTracker/.git/github-autosync.log</string>
+  <string>/Users/yuriiobraztsov/Projects/SportTracker/.git/github-autosync.log</string>
   <key>StandardErrorPath</key>
-  <string>/Users/yuriiobraztsov/Desktop/Мой проект по sport tracker ( Идеи )/SportTracker/.git/github-autosync.log</string>
+  <string>/Users/yuriiobraztsov/Projects/SportTracker/.git/github-autosync.log</string>
 </dict>
 </plist>
