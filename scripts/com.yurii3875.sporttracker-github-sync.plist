@@ -7,7 +7,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/zsh</string>
-    <string>/Users/yuriiobraztsov/Desktop/Мой проект по sport tracker ( Идеи )/SportTracker/scripts/github-autosync.sh</string>
+    <string>/Users/yuriiobraztsov/.local/bin/sporttracker-github-autosync</string>
   </array>
   <key>StartInterval</key>
   <integer>60</integer>
