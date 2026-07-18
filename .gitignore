@@ -3,3 +3,12 @@ DerivedData/
 build/
 xcuserdata/
 *.xcuserstate
+
+# Local configuration and credentials
+.env
+.env.*
+*.key
+*.pem
+*.p8
+*.mobileprovision
+GoogleService-Info.plist

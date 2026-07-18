@@ -1,12 +1,54 @@
 import ActivityKit
 import AppIntents
+import Foundation
 import SwiftUI
 import WidgetKit
 
 @main
 struct SportTrackerWidgets: WidgetBundle {
     var body: some Widget {
+        WorkoutStatusWidget()
         WorkoutLiveActivity()
+    }
+}
+
+private struct WorkoutStatusEntry: TimelineEntry {
+    let date: Date
+}
+
+private struct WorkoutStatusProvider: TimelineProvider {
+    func placeholder(in context: Context) -> WorkoutStatusEntry { WorkoutStatusEntry(date: .now) }
+
+    func getSnapshot(in context: Context, completion: @escaping (WorkoutStatusEntry) -> Void) {
+        completion(WorkoutStatusEntry(date: .now))
+    }
+
+    func getTimeline(in context: Context, completion: @escaping (Timeline<WorkoutStatusEntry>) -> Void) {
+        let entry = WorkoutStatusEntry(date: .now)
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: 30, to: .now) ?? .now.addingTimeInterval(1_800)
+        completion(Timeline(entries: [entry], policy: .after(refreshDate)))
+    }
+}
+
+private struct WorkoutStatusWidget: Widget {
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: "WorkoutStatusWidget", provider: WorkoutStatusProvider()) { _ in
+            VStack(alignment: .leading, spacing: 8) {
+                Label("Sport Tracker", systemImage: "figure.run.circle.fill")
+                    .font(.headline)
+                    .foregroundStyle(.mint)
+                Text("Готов к тренировке")
+                    .font(.title3.bold())
+                Text("Открой приложение и начни движение")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .containerBackground(.black.gradient, for: .widget)
+        }
+        .configurationDisplayName("Статус тренировки")
+        .description("Быстрый доступ к Sport Tracker.")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
